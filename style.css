@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -8,19 +9,33 @@
 body {
   background-color: #f8f9fc;
   color: #333;
+  line-height: 1.6;
 }
 
-/* Navbar */
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
   background-color: #f8f9fc;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo img {
   height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links a {
@@ -29,18 +44,26 @@ body {
   color: #000;
   font-size: 14px;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:first-child {
   font-weight: bold;
+  color: #e85a18;
 }
 
-/* Hero Section */
+.nav-links a:hover {
+  color: #e85a18;
+}
+
+
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px;
+  padding: 80px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .hero-text {
@@ -51,6 +74,7 @@ body {
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .hero-text .highlight {
@@ -58,157 +82,300 @@ body {
 }
 
 .hero-text p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   color: #555;
+  margin-bottom: 30px;
 }
 
 .hero-image img {
-  width: 400px;
+  width: 450px;
   max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
 }
-/* Plants Section */
+
+.hero-image img:hover {
+  transform: scale(1.03);
+}
+
 .plants-section {
-  padding: 60px;
+  padding: 80px 60px;
   background-color: #fff;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
+.section-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.section-header p {
+  color: #555;
+}
+
 .plants-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Force 4 columns */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
 }
 
-/* Mobile view (2 columns) */
+@media (max-width: 1024px) {
+  .plants-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 767px) {
   .plants-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Force 2 columns */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 }
 
-/* Very small mobile (1 column) */
 @media (max-width: 480px) {
   .plants-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Individual plant items */
 .plant-item {
   background-color: #f8f9fc;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   text-align: center;
-  padding: 20px;
-  transition: transform 0.3s ease;
+  padding: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.plant-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .plant-item img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 4px;
-  margin-bottom: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.plant-item h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.plant-item p {
+  color: #e85a18;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
 
 .add-to-cart {
   background-color: #e85a18;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 12px 25px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   width: 100%;
+  transition: all 0.3s ease;
 }
 
-/* Flower Lover Section Styles */
+.add-to-cart:hover {
+  background-color: #d04a10;
+  transform: translateY(-2px);
+}
+
+
 .flower-lover-section {
-  padding: 80px 60px;
+  width: 100%;
   background-color: #f8f9fc;
 }
 
-.content-wrapper {
+.flower-container {
+  display: flex;
+  width: 100%;
+}
+
+.flower-image-wrapper {
+  flex: 1;
+  position: relative;
+  padding: 40px;
   display: flex;
   align-items: center;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
+  justify-content: center;
+}
+.flower-main-image {
+  width: 80%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.image-content {
+
+.trust-badge {
+  position: absolute;
+  top: -5px;
+  right: 50px; 
+  width: 150px; 
+  height: 150px;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.trust-badge:hover {
+  transform: scale(1.1);
+}
+
+.flower-content {
   flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.image-content img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.text-content {
-  flex: 1;
-  padding-left: 40px;
-}
-
-.text-content h2 {
-  font-size: 36px;
+.flower-content h2 {
+  font-size: 42px;
   font-weight: 700;
   margin-bottom: 30px;
   color: #333;
+  line-height: 1.3;
 }
 
-.text-content h2 span {
+.flower-content h2 span {
   color: #e85a18;
 }
 
-.description p {
-  margin-bottom: 20px;
-  line-height: 1.6;
+.flower-description p {
+  margin-bottom: 25px;
+  line-height: 1.7;
   color: #555;
+  font-size: 17px;
 }
 
-.trusted-badge {
-  margin-top: 30px;
-}
 
-.trusted-badge img {
-  height: 80px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .flower-lover-section {
-    padding: 60px 30px;
+@media (max-width: 1200px) {
+  .hero, .plants-section {
+    padding: 60px 40px;
   }
   
-  .content-wrapper {
+  .flower-content {
+    padding: 60px;
+  }
+  
+  .trust-badge {
+    top: 30px;
+    right: 30px;
+    width: 70px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .flower-container {
     flex-direction: column;
-    gap: 40px;
   }
   
-  .image-content {
+  .flower-image-wrapper {
+    height: 500px;
+  }
+  
+  .flower-content {
+    padding: 50px 40px;
+  }
+  
+  .trust-badge {
+    top: 30px;
+    right: 30px;
+    width: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 30px;
+  }
+  
+  .hero {
+    padding: 60px 30px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-text {
+    margin-bottom: 50px;
+  }
+  
+  .hero-image img {
     width: 100%;
   }
   
-  .text-content {
-    padding-left: 0;
+  .plants-section {
+    padding: 60px 30px;
   }
   
-  .text-content h2 {
-    font-size: 28px;
+  .flower-content {
+    padding: 40px 30px;
   }
   
-  .trusted-badge img {
-    height: 60px;
+  .flower-content h2 {
+    font-size: 36px;
+  }
+  
+  .trust-badge {
+    top: 20px;
+    right: 20px;
+    width: 50px;
   }
 }
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  
+  .nav-links a {
+    margin-left: 15px;
+    font-size: 13px;
+  }
+  
+  .hero {
+    padding: 50px 20px;
+  }
+  
+  .hero-text h1 {
+    font-size: 36px;
+  }
+  
+  .plants-section {
+    padding: 50px 20px;
+  }
+  
+  .flower-content h2 {
+    font-size: 32px;
+  }
+  
+  .flower-description p {
+    font-size: 16px;
+  }
+}
+
