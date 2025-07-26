@@ -782,3 +782,47 @@ body {
     grid-column: span 1;
   }
 }
+@media (max-width: 768px) {
+  .nav-links a:not(:last-child) {
+    display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hero-text {
+    text-align: left;
+  }
+}
+
+
+.spin-animation {
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse; 
+    padding: 40px 20px;
+    text-align: left;
+  }
+
+  .hero-text {
+    text-align: left;   
+    margin-top: 20px;   
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-bottom: 0;   
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 400px;
+  }
+}
